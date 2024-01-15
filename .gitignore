@@ -34,6 +34,11 @@ frontend/.vercel
 frontend/*.tsbuildinfo
 frontend/next-env.d.ts
 
+# pwa
+frontend/sw.*
+frontend/workbox-*
+frontend/swe-worker-*
+
 # ---------------------! BACKEND !---------------------
 
 backend/target
