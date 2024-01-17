@@ -1,45 +1,43 @@
 # ---------------------! FRONTEND !---------------------
 
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 # dependencies
-frontend/node_modules
-frontend/.pnp
-frontend/.pnp.js
+client/node_modules
+client/.pnp
+client/.pnp.js
 
 # testing
-frontend/coverage
+client/coverage
 
 # next.js
-frontend/.next/
-frontend/out/
-
-# production
-frontend/build
+client/.next/
+client/out/
+client/build
 
 # misc
-frontend/.DS_Store
-frontend/*.pem
+client/.DS_Store
+client/*.pem
 
 # debug
-frontend/npm-debug.log*
-frontend/yarn-debug.log*
-frontend/yarn-error.log*
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/.pnpm-debug.log*
 
 # local env files
-frontend/.env*.local
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
 
-# vercel
-frontend/.vercel
+# turbo
+client/.turbo
 
-# typescript
-frontend/*.tsbuildinfo
-frontend/next-env.d.ts
-
-# pwa
-frontend/sw.*
-frontend/workbox-*
-frontend/swe-worker-*
+client/.contentlayer
+client/.env
 
 # ---------------------! BACKEND !---------------------
 
-backend/target
-backend/.env
+server/target
+server/.env
