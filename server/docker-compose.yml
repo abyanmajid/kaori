@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  # myapi:
+  #   container_name: myapi
+  #   image: kinderheim511/axum-practice:1.0.0
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+  #     - RUST_LOG=info
+  #   networks:
+  #     - backend
+
+  db:
+    image: postgres:latest
+    container_name: db
+    ports:
+      - "6500:5432"
+    volumes:
+      - progresDB:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+  # pgAdmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgAdmin
+  #   env_file:
+  #     - ./.env
+  #   ports:
+  #     - "5050:80"
+  #
+volumes:
+  progresDB: {}
+
+networks:
+  backend:
+    driver: bridge

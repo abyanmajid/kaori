@@ -12,6 +12,10 @@ import {
 } from "@/components/ui/card"
 
 export default function IndexPage() {
+  const response = fetch("http://localhost:8000").then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-2">
