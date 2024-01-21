@@ -41,3 +41,4 @@ client/.env
 
 server/target
 server/.env
+server/*.exe

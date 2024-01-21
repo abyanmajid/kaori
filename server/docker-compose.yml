@@ -1,31 +1,29 @@
 version: "3.9"
 
 services:
-  # myapi:
-  #   container_name: myapi
-  #   image: kinderheim511/axum-practice:1.0.0
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - db
-  #   environment:
-  #     - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-  #     - RUST_LOG=info
-  #   networks:
-  #     - backend
-
-  db:
-    image: postgres:latest
-    container_name: db
+  kaori-server:
+    container_name: kaori-server
+    image: kinderheim511/kaori-server:1.0.0
+    restart: always
+    environment:
+      DATABASE_URL: postgres://postgres.okgmrndkfsbjtolabdmm:${DATABASE_PASSWORD}@aws-0-ap-southeast-2.pooler.supabase.com:6543/postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "6500:5432"
-    volumes:
-      - progresDB:/var/lib/postgresql/data
-    env_file:
-      - ./.env
+      - "8000:8000"
+    networks:
+      - backend
+
+  # db:
+  #   image: postgres:latest
+  #   container_name: db
+  #   ports:
+  #     - "6500:5432"
+  #   volumes:
+  #     - progresDB:/var/lib/postgresql/data
+  #   env_file:
+  #     - ./.env
   # pgAdmin:
   #   image: dpage/pgadmin4
   #   container_name: pgAdmin
@@ -34,8 +32,8 @@ services:
   #   ports:
   #     - "5050:80"
   #
-volumes:
-  progresDB: {}
+# volumes:
+#   progresDB: {}
 
 networks:
   backend:
