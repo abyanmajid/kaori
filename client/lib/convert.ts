@@ -29,14 +29,14 @@ export function secondsToHMSLong(seconds: number): string {
   let timeString = '';
 
   if (hours > 0) {
-      timeString += `${hours} ${hours === 1 ? 'hour' : 'hours'}`;
+    timeString += `${hours} ${hours === 1 ? 'hour' : 'hours'}`;
   }
 
   if (minutes > 0) {
-      if (timeString.length > 0) {
-          timeString += ' ';
-      }
-      timeString += `${minutes} min`;
+    if (timeString.length > 0) {
+      timeString += ' ';
+    }
+    timeString += `${minutes} min`;
   }
 
   return timeString || '0 min'; // Return '0 min' if both hours and minutes are 0
@@ -56,4 +56,35 @@ export function secondsToHMS(seconds: number): string {
 
   // Concatenate the parts into a final string
   return `${paddedHours}:${paddedMinutes}:${paddedSeconds}`
+}
+
+export function convertDate(dateString: string) {
+  const date = new Date(dateString);
+
+  const formattedDate = date.toLocaleDateString('en-CA', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+
+  // Set time to the end of the day
+  const endOfDayTime = "23:59:59";
+
+  return `${formattedDate}T${endOfDayTime}`;
+}
+
+// Example usage
+const originalDate = "Wed Jan 03 2024 00:00:00 GMT+0700 (Western Indonesia Time)";
+const convertedDate = convertDate(originalDate);
+console.log(convertedDate); // Output will be in the format "2024-01-03T00:00:00"
+
+export function addOneDayAndFormat(dateString: string) {
+  const date = new Date(dateString);
+
+  // Add one day
+  date.setDate(date.getDate() + 1);
+
+  const formattedDate = date.toISOString().split('T')[0]; // Extracts the date part
+
+  return `${formattedDate}T00:00:00`;
 }

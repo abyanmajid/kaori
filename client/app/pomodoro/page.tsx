@@ -5,12 +5,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 import AudioPlayer from "react-h5-audio-player"
 import useSound from "use-sound"
 
-import { hmsToSeconds, secondsToHMS, secondsToHMSLong } from "@/lib/convert"
+import { hmsToSeconds, secondsToHMS } from "@/lib/convert"
 import delay from "@/lib/delay"
-import {
-  nextSessionHandler,
-  previousSessionHandler,
-} from "@/lib/pomodoro-handlers"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,

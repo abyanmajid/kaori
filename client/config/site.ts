@@ -11,7 +11,7 @@ export const siteConfig = {
     },
     {
       title: "Tasks",
-      href: "/user/1/tasks",
+      href: "tasks",
     },
     {
       title: "Pomodoro",
@@ -19,11 +19,7 @@ export const siteConfig = {
     },
     {
       title: "Analytics",
-      href: "/user/1/analytics",
-    },
-    {
-      title: "About",
-      href: "/about",
+      href: "analytics",
     },
   ],
   links: {

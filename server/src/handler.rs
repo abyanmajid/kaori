@@ -80,6 +80,14 @@ pub async fn get_user(
     Path(id): Path<uuid::Uuid>,
     State(data): State<Arc<AppState>>,
 ) -> Result<impl IntoResponse, (StatusCode, Json<serde_json::Value>)> {
+    if let Err(error) = sqlx::query("DEALLOCATE ALL").execute(&data.db).await {
+        return Err((
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(
+                json!({"status": "error", "message": format!("Failed to deallocate statements: {:?}", error)}),
+            ),
+        ));
+    }
     let query_result = sqlx::query_as!(UserModel, "SELECT * FROM users WHERE id = $1", id)
         .fetch_one(&data.db)
         .await;
@@ -281,3 +289,4 @@ pub async fn delete_todo(
 
     Ok(Json(json_response))
 }
+
